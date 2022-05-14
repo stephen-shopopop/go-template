@@ -1,12 +1,12 @@
 # Basic Makefile for Golang project
 
 SERVICE		?= $(shell basename `go list`)
-VERSION		?= $(shell git describe --tags --always --dirty --match=v* 2> /dev/null || cat $(PWD)/.version 2> /dev/null || echo v0)
+VERSION		?= $(shell git cat $(PWD)/.version 2> /dev/null || echo v0)
 PACKAGE		?= $(shell go list)
 PACKAGES	?= $(shell go list ./...)
 FILES		?= $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 BUILD_DIR	?= build
-TAGS            ?= ${shell git tag } $(filter-out $@,$(MAKECMDGOALS))
+TAGS            ?= ${shell git tag } ${VERSION}
 RELEASE         ?= ${shell git push --tags}
 
 BINARY_NAME ="hello"
