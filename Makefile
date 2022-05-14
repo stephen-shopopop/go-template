@@ -1,7 +1,7 @@
 # Basic Makefile for Golang project
 
 SERVICE		?= $(shell basename `go list`)
-VERSION		?= $(shell git cat $(PWD)/.version 2> /dev/null || echo v0)
+VERSION		?= $(shell cat $(PWD)/.version 2> /dev/null || echo v0)
 PACKAGE		?= $(shell go list)
 PACKAGES	?= $(shell go list ./...)
 FILES		?= $(shell find . -type f -name '*.go' -not -path "./vendor/*")
