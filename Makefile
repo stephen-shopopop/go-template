@@ -6,21 +6,21 @@ PACKAGE		?= $(shell go list)
 PACKAGES	?= $(shell go list ./...)
 FILES		?= $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 BUILD_DIR	?= build
-TAGS            ?=${shell git tag } $(filter-out $@,$(MAKECMDGOALS))
-RELEASE         ?=${shell git push --tags}
+TAGS            ?= ${shell git tag } $(filter-out $@,$(MAKECMDGOALS))
+RELEASE         ?= ${shell git push --tags}
 
 BINARY_NAME ="hello"
 
 # GO commands
-GOCMD   =go
-GOBUILD =$(GOCMD) build
-GORUN   =$(GOCMD) run
-GOCLEAN =$(GOCMD) clean
-GOTEST  =$(GOCMD) test
-GOGET   =$(GOCMD) get
-GOVET   =$(GOCMD) vet
-GOFMT   =gofmt
-GOLINT  =golint
+GOCMD   = go
+GOBUILD = $(GOCMD) build
+GORUN   = $(GOCMD) run
+GOCLEAN = $(GOCMD) clean
+GOTEST  = $(GOCMD) test
+GOGET   = $(GOCMD) get
+GOVET   = $(GOCMD) vet
+GOFMT   = gofmt
+GOLINT  = golint
 
 .PHONY: help clean fmt lint vet test test-cover build build-docker all
 
