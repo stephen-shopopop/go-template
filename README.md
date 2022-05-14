@@ -23,3 +23,7 @@ go run .
 2. make install // install dependencies
 3. make build // build binary
 ```
+
+### References
+
+- [golang for nodejs developers](https://github.com/miguelmota/golang-for-nodejs-developers)
