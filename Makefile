@@ -39,7 +39,9 @@ all: ## clean, format, build and unit test
 
 install: ## build and install go application executable
 	${GOCMD} install -v ./...
-  go install github.com/go-delve/delve/cmd/dlv@latest
+
+# https://github.com/golang/vscode-go/blob/master/docs/debugging.md
+# go install github.com/go-delve/delve/cmd/dlv@latest
 
 deps: ## install deps
 	${GOCMD} mod vendor
