@@ -1,5 +1,6 @@
 {
   "recommendations": [
-    "golang.Go"
+    "golang.Go",
+    "ethan-reesor.vscode-go-test-adapter"
   ]
 }

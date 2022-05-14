@@ -4,12 +4,10 @@ SERVICE		?= $(shell basename `go list`)
 VERSION		?= $(shell cat $(PWD)/.version 2> /dev/null || echo v0)
 PACKAGE		?= $(shell go list)
 PACKAGES	?= $(shell go list ./...)
-FILES		?= $(shell find . -type f -name '*.go' -not -path "./vendor/*")
+FILES			?= $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 BUILD_DIR	?= build
-TAGS            ?= ${shell git tag } ${VERSION}
-RELEASE         ?= ${shell git push --tags}
 
-BINARY_NAME ="hello"
+BINARY_NAME = "hello"
 
 # GO commands
 GOCMD   = go
@@ -22,7 +20,7 @@ GOVET   = $(GOCMD) vet
 GOFMT   = gofmt
 GOLINT  = golint
 
-.PHONY: help clean fmt lint vet test test-cover build build-docker all
+.PHONY: help clean fmt lint test build build-darwin build-win buid-linux all release
 
 default: help
 
@@ -31,20 +29,18 @@ help:
 	@echo 'usage: make [target] ...'
 	@echo ''
 	@echo 'targets:'
-	@egrep '^(.+)\:\ .*#\ (.+)' ${MAKEFILE_LIST} | sed 's/:.*#/#/' | column -t -c 2 -s '#'
+	@grep -E '^[a-z.A-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-# clean, format, build and unit test
-all:
+all: ## clean, format, build and unit test
 	make clean-all
 	make gofmt
 	make build
 	make test
 
-# build and install go application executable
-install:
+install: ## build and install go application executable
 	${GOCMD} install -v ./...
 
-deps:
+deps: ## install deps
 	${GOCMD} mod vendor
 	${GOCMD} mod verify
 
@@ -63,25 +59,24 @@ tools:
 clean:
 	${GOCLEAN}
 
-# remove all generated artifacts and clean builds
-clean-all:
+clean-all: ## remove all generated artifacts and clean builds
 	${GOCLEAN} -i ./...
 	rm -fr build
 
-# Format all files
-fmt:
+fmt: ## Format all files
 	$(GOFMT) $(FILES)
 
 # Lint all packages
 lint:
 	${GOLINT} $(PACKAGES)
 
-# Run
-run:
+test:	## tests
+	${GOTEST} -v -race ./...
+
+run: ## run
 	${GORUN} .
 
-# Build binary
-build:
+build: ## build binary
 	${GOBUILD} -o $(BUILD_DIR)/${BINARY_NAME} .
 
 # Build binary windows
@@ -95,4 +90,13 @@ build-darwin:
 # Build binary linux
 build-linux:
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(BINARY_NAME)-linux .
+
+release:
+	git add -u
+	git commit -am "release ${VERSION}"
+	git tag ${VERSION}
+	git push --tags
+
+
+
 
