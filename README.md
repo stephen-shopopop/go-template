@@ -13,7 +13,7 @@
 ## Usage
 
 ```bash
-go run .
+go run ./cmd/cli
 ```
 
 ### Make (linux/darwin)
