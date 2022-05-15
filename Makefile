@@ -20,7 +20,7 @@ GOVET   = $(GOCMD) vet
 GOFMT   = gofmt
 GOLINT  = golint
 
-.PHONY: help clean fmt lint test build build-darwin build-win buid-linux all release
+.PHONY: help clean clean-all install deps tools fmt lint test build build-darwin build-win buid-linux all release
 
 default: help
 
@@ -33,7 +33,7 @@ help:
 
 all: ## clean, format, build and unit test
 	make clean-all
-	make gofmt
+	make fmt
 	make build
 	make test
 
