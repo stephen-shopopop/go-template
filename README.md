@@ -27,3 +27,4 @@ go run .
 ### References
 
 - [golang for nodejs developers](https://github.com/miguelmota/golang-for-nodejs-developers)
+- [Structure programme](https://github.com/eliben/modlib)
