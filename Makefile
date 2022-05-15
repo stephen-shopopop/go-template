@@ -77,22 +77,22 @@ test:	## tests
 	${GOTEST} -v -race ./...
 
 run: ## run
-	${GORUN} .
+	${GORUN} ./cmd/cli
 
 build: ## build binary
-	${GOBUILD} -o $(BUILD_DIR)/${BINARY_NAME} .
+	${GOBUILD} -o $(BUILD_DIR)/${BINARY_NAME} ./cmd/cli
 
 # Build binary windows
 build-win:
-	GOOS=windows GOARCH=amd64 ${GOBUILD} -o $(BUILD_DIR)/${BINARY_NAME}.exe .
+	GOOS=windows GOARCH=amd64 ${GOBUILD} -o $(BUILD_DIR)/${BINARY_NAME}.exe ./cmd/cli
 
 # Build binary darwin
 build-darwin:
-	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(BINARY_NAME)-darwin .
+	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(BINARY_NAME)-darwin ./cmd/cli
 
 # Build binary linux
 build-linux:
-	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(BINARY_NAME)-linux .
+	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(BINARY_NAME)-linux ./cmd/cli
 
 release:
 	git add -u
