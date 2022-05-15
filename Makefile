@@ -36,14 +36,14 @@ all: ## clean, format, build and unit test
 	make test
 
 install: ## build and install go application executable
-	${GOCMD} install -v ./...
+	$(GOCMD) install -v ./...
 
 # https://github.com/golang/vscode-go/blob/master/docs/debugging.md
 # go install github.com/go-delve/delve/cmd/dlv@latest
 
 deps: ## install deps
-	${GOCMD} mod vendor
-	${GOCMD} mod verify
+	$(GOCMD) mod vendor
+	$(GOCMD) mod verify
 
 env:
 	@echo $(CURDIR)
@@ -58,10 +58,10 @@ tools:
 
 # go clean
 clean:
-	${GOCLEAN}
+	$(GOCLEAN)
 
 clean-all: ## remove all generated artifacts and clean builds
-	${GOCLEAN} -i ./...
+	$(GOCLEAN) -i ./...
 	rm -fr build
 
 fmt: ## Format all files
@@ -69,20 +69,20 @@ fmt: ## Format all files
 
 # Lint all packages
 lint:
-	${GOLINT} $(PACKAGES)
+	$(GOLINT) $(PACKAGES)
 
 test:	## tests
-	${GOTEST} -v -race ./...
+	$(GOTEST) -v -race ./...
 
 run: ## run
-	${GORUN} ./cmd/cli
+	$(GORUN) ./cmd/cli
 
 build: ## build binary
-	${GOBUILD} -o $(BUILD_DIR)/${SERVICE} ./cmd/cli
+	$(GOBUILD) -o $(BUILD_DIR)/$(SERVICE) ./cmd/cli
 
 # Build binary windows
 build-win:
-	GOOS=windows GOARCH=amd64 ${GOBUILD} -o $(BUILD_DIR)/${SERVICE}.exe ./cmd/cli
+	GOOS=windows GOARCH=amd64 $(GOBUILD) -o $(BUILD_DIR)/$(SERVICE).exe ./cmd/cli
 
 # Build binary darwin
 build-darwin:
@@ -93,5 +93,5 @@ build-linux:
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(SERVICE)-linux ./cmd/cli
 
 release:
-	git tag ${VERSION}
+	git tag $(VERSION)
 	git push --tags
