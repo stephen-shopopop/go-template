@@ -7,8 +7,6 @@ PACKAGES	?= $(shell go list ./...)
 FILES			?= $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 BUILD_DIR	?= build
 
-BINARY_NAME = "hello"
-
 # GO commands
 GOCMD   = go
 GOBUILD = $(GOCMD) build
@@ -80,19 +78,19 @@ run: ## run
 	${GORUN} ./cmd/cli
 
 build: ## build binary
-	${GOBUILD} -o $(BUILD_DIR)/${BINARY_NAME} ./cmd/cli
+	${GOBUILD} -o $(BUILD_DIR)/${SERVICE} ./cmd/cli
 
 # Build binary windows
 build-win:
-	GOOS=windows GOARCH=amd64 ${GOBUILD} -o $(BUILD_DIR)/${BINARY_NAME}.exe ./cmd/cli
+	GOOS=windows GOARCH=amd64 ${GOBUILD} -o $(BUILD_DIR)/${SERVICE}.exe ./cmd/cli
 
 # Build binary darwin
 build-darwin:
-	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(BINARY_NAME)-darwin ./cmd/cli
+	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(SERVICE)-darwin ./cmd/cli
 
 # Build binary linux
 build-linux:
-	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(BINARY_NAME)-linux ./cmd/cli
+	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(SERVICE)-linux ./cmd/cli
 
 release:
 	git add -u
