@@ -93,7 +93,5 @@ build-linux:
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o $(BUILD_DIR)/$(SERVICE)-linux ./cmd/cli
 
 release:
-	git add -u
-	git commit -am "release ${VERSION}"
 	git tag ${VERSION}
 	git push --tags
