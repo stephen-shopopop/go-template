@@ -28,3 +28,4 @@ go run .
 
 - [golang for nodejs developers](https://github.com/miguelmota/golang-for-nodejs-developers)
 - [Structure programme](https://github.com/eliben/modlib)
+- [type generic](https://go.dev/blog/intro-generics)
