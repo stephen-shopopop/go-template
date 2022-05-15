@@ -28,4 +28,5 @@ go run .
 
 - [golang for nodejs developers](https://github.com/miguelmota/golang-for-nodejs-developers)
 - [Structure programme](https://github.com/eliben/modlib)
-- [type generic](https://go.dev/blog/intro-generics)
+- [type generic - go1.18](https://go.dev/blog/intro-generics)
+- [Debuter avec golang](https://www.youtube.com/c/getCodingKnowledge/videos)
