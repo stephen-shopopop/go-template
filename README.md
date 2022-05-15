@@ -27,6 +27,6 @@ go run ./cmd/cli
 ### References
 
 - [golang for nodejs developers](https://github.com/miguelmota/golang-for-nodejs-developers)
-- [Structure programme](https://github.com/eliben/modlib)
+- [Structure programme](https://blog.otso.fr/2020-10-11-organisation-projet-go-standard)
 - [type generic - go1.18](https://go.dev/blog/intro-generics)
 - [Debuter avec golang](https://www.youtube.com/c/getCodingKnowledge/videos)
