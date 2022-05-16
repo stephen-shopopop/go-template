@@ -20,7 +20,7 @@ go run ./cmd/cli
 
 ```bash
 1. make // help
-2. make install // install dependencies
+2. make deps // install dependencies
 3. make build // build binary
 ```
 
