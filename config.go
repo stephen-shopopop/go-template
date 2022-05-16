@@ -1,4 +1,4 @@
-package go-template
+package main
 
 func Config() string {
 	return "go config"
