@@ -46,6 +46,7 @@ deps: ## install deps
 	$(GOCMD) mod verify
 
 env:
+	@$(GOCMD) version
 	@echo $(CURDIR)
 	@echo $(SERVICE)
 	@echo $(PACKAGE)

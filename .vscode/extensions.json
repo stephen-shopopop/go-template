@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "golang.Go",
-    "ethan-reesor.vscode-go-test-adapter"
+    "ethan-reesor.vscode-go-test-adapter",
+    "mutantdino.resourcemonitor"
   ]
 }

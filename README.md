@@ -1,4 +1,4 @@
-[![Minimal deno version](https://img.shields.io/static/v1?label=go&message=%3E=1.18.2&color)](https://go.dev/doc/devel/release)
+[![Minimal golang version](https://img.shields.io/static/v1?label=go&message=%3E=1.19.5&color)](https://go.dev/doc/devel/release)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/stephen-shopopop/go-template/graphs/commit-activity)
 [![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
 [![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)

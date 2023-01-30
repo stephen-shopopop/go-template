@@ -29,7 +29,8 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"golang.Go",
-    		"ethan-reesor.vscode-go-test-adapter"
+    		"ethan-reesor.vscode-go-test-adapter",
+				"mutantdino.resourcemonitor"
 			]
 		}
 	},
