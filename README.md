@@ -31,3 +31,4 @@ go run ./cmd/cli
 - [golang for nodejs developers](https://github.com/miguelmota/golang-for-nodejs-developers)
 - [Structure programme](https://blog.otso.fr/2020-10-11-organisation-projet-go-standard)
 - [Debuter avec golang](https://www.youtube.com/c/getCodingKnowledge/videos)
+- [learn golang with test](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
