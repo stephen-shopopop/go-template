@@ -1,6 +1,6 @@
 module github.com/stephen-shopopop/go-template
 
-go 1.17
+go 1.22
 
 require (
 )
