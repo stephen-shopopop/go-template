@@ -1,10 +1,64 @@
 {
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "[go]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "golang.go"
+  "go.toolsManagement.autoUpdate": true,
+  "go.useLanguageServer": true,
+  "go.addTags": {
+    "tags": "json",
+    "options": "json=omitempty",
+    "promptForTags": false,
+    "transform": "snakecase",
   },
+  "gopls": {
+    "formatting.gofumpt": true,
+    "usePlaceholders": true,
+    "ui.semanticTokens": true,
+    "staticcheck": false, // Enable/Disable if not causing memory issues
+  },
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--fast",
+    "--timeout",
+    "5m",
+    "--fix"
+  ],
+  // Disable test caching, race and show coverage (in sync with makefile)
+  "go.testFlags": [
+    "-cover",
+    "-race",
+    "-count=1",
+    "-v",
+    "-timeout=5m"
+  ],
+  "go.enableCodeLens": {
+    "runtest": true,
+  },
+  // Go-specific editor settings
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.stickyScroll.enabled": true, // Better navigation for long files
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.fixAll": "always"
+    },
+  },
+  // Enhanced inlay hints
+  "go.inlayHints.compositeLiteralFields": true,
+  "go.inlayHints.compositeLiteralTypes": true,
+  "go.inlayHints.functionTypeParameters": true,
+  "go.inlayHints.parameterNames": true,
+  "go.inlayHints.rangeVariableTypes": true,
+  "go.inlayHints.constantValues": true,
+  // Security checks
+  "go.diagnostic.vulncheck": "Imports",
+  "go.toolsEnvVars": {
+    "GOFLAGS": "-buildvcs=false" // Better performance for large repos
+  },
+  "git.ignoreRebaseWarning": true,
+  "git.replaceTagsWhenPull": true,
+  "makefile.configureOnOpen": true,
   "[markdown]": {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
@@ -23,6 +77,7 @@
   },
   "prettier.enable": false,
   "editor.fontFamily": "Jetbrains Mono, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.lineHeight": 1.4,
   "errorLens.gutterIconsEnabled": true,

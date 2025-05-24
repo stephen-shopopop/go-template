@@ -46,9 +46,10 @@ install: ## build and install go application executable
 
 
 .PHONY: install
-install/deps: requirements ## Install the project dependencies
+install/deps: ## Install the project dependencies
 	@echo "🍿 Installing dependencies for mac with homebrew (https://brew.sh)... "
 	@brew install golangci-lint
+	@brew install graphviz
 
 
 # https://github.com/golang/vscode-go/blob/master/docs/debugging.md
@@ -84,11 +85,20 @@ clean-all: ## remove all generated artifacts and clean builds
 
 .PHONY: fmt
 fmt: ## Format all files
-	$(GOFMT) -w $(FILES)
+	$(GOFMT) -s -w $(FILES) && golangci-lint fmt $(FILES)
+
+.PHONY: lint
+lint: ## lint: Runs the linters.
+	@echo "Running linters..."
+	@golangci-lint run ./...
 
 .PHONY: test
 test:	## tests
-	$(GOTEST) -v -race ./...
+	@go clean --testcache && $(GOTEST) -v -race -timeout 60s ./... --coverprofile=cov.out
+  @go tool cover --html=cov.out
+
+.PHONY: check
+check: lint tests ## check: Runs the linters and tests.
 
 .PHONY: run
 run: ## run

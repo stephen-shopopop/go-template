@@ -32,3 +32,4 @@ go run ./cmd/cli
 - [Structure programme](https://blog.otso.fr/2020-10-11-organisation-projet-go-standard)
 - [Debuter avec golang](https://www.youtube.com/c/getCodingKnowledge/videos)
 - [learn golang with test](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
+- [go zero](https://go-zero.dev/en/)

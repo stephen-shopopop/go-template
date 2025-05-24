@@ -30,9 +30,8 @@
       },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        // Golang
+        / // Golang
         "golang.Go",
-        "premparihar.gotestexplorer",
         // Code quality
         "aaron-bond.better-comments",
         "kisstkondoros.vscode-codemetrics",
@@ -63,7 +62,9 @@
         // For me
         "ms-ceintl.vscode-language-pack-fr",
         // Yaml
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        // Make
+        "ms-vscode.makefile-tools"
       ]
     }
   },
