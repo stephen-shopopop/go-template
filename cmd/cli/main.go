@@ -1,3 +1,5 @@
+// https://github.com/marketplace/actions/golangci-lint
+
 package main
 
 import (

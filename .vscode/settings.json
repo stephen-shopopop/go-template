@@ -1,0 +1,40 @@
+{
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "prettier.enable": false,
+  "editor.fontFamily": "Jetbrains Mono, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 13,
+  "editor.lineHeight": 1.4,
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconSet": "borderless",
+  "errorLens.followCursor": "activeLine",
+  "editor.acceptSuggestionOnEnter": "on",
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true
+  }
+}
