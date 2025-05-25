@@ -1,18 +1,15 @@
 package main
 
 import (
-	"errors"
-	"fmt"
+	"github.com/stephen-shopopop/go-template/internal/domain/hello"
+	"github.com/stephen-shopopop/go-template/internal/single"
+	"github.com/stephen-shopopop/go-template/pkg/logger"
 )
 
-func Hello(v string) (string, error) {
-	if v == "hello" {
-		return "", errors.New("empty name")
+func main() {
+	for i := 0; i < 30; i++ {
+		single.GetInstance()
 	}
 
-	return v, nil
-}
-
-func main() {
-	fmt.Println(Hello("hello"))
+	logger.Info(hello.Execute("hello"))
 }
