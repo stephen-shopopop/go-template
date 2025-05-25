@@ -1,10 +1,6 @@
-[![Minimal golang version](https://img.shields.io/static/v1?label=go&message=%3E=1.19.5&color)](https://go.dev/doc/devel/release)
+[![Minimal golang version](https://img.shields.io/static/v1?label=go&message=%3E=1.24&color)](https://go.dev/doc/devel/release)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/stephen-shopopop/go-template/graphs/commit-activity)
-[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
-[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
-[![Visual Studio Code](https://img.shields.io/badge/--007ACC?logo=visual%20studio%20code&logoColor=ffffff)](https://code.visualstudio.com/)
 [![Go](https://github.com/stephen-shopopop/go-template/actions/workflows/go.yml/badge.svg)](https://github.com/stephen-shopopop/go-template/actions/workflows/go.yml)
-[![Changelog](https://github.com/stephen-shopopop/go-template/actions/workflows/release.yml/badge.svg)](https://github.com/stephen-shopopop/go-template/actions/workflows/release.yml)
 
 # Go template
 
@@ -33,3 +29,4 @@ go run ./cmd/cli
 - [Debuter avec golang](https://www.youtube.com/c/getCodingKnowledge/videos)
 - [learn golang with test](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
 - [go zero](https://go-zero.dev/en/)
+- [dev container](https://containers.dev/features.html)
