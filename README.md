@@ -1,5 +1,5 @@
 [![Minimal golang version](https://img.shields.io/static/v1?label=go&message=%3E=1.24&color)](https://go.dev/doc/devel/release)
-[![Go](https://github.com/stephen-shopopop/go-template/actions/workflows/go.yml/badge.svg)](https://github.com/stephen-shopopop/go-template/actions/workflows/go.yml)
+
 
 # Go template
 
