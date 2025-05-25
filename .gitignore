@@ -24,3 +24,5 @@ vendor
 
 # Go workspace file
 go.work
+
+megalinter-reports/
