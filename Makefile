@@ -32,21 +32,13 @@ help:
 	@echo 'targets:'
 	@grep -E '^[a-z.A-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-
-.PHONY: all
-all: ## clean, format, build and unit test
-	make clean-all
-	make fmt
-	make build
-	make test
-
-.PHONY: install
-install: ## build and install go application executable
+.PHONY: install/global
+install/global: ## build and install go application executable
 	$(GOCMD) install -v ./...
 
 
-.PHONY: install/deps
-install/deps: ## Install the project dependencies
+.PHONY: install
+install: ## Install the project dependencies
 	@echo "🍿 Installing dependencies for mac with homebrew (https://brew.sh)... "
 	@brew install golangci-lint
 	@brew install graphviz
@@ -94,12 +86,11 @@ lint: ## lint: Runs the linters.
 	@golangci-lint run ./...
 
 .PHONY: test
-test:	## tests
-	@go clean --testcache && $(GOTEST) -v -race -timeout 60s ./... --coverprofile=cov.out
-  @go tool cover --html=cov.out
+test:	## test
+	@go clean --testcache && $(GOTEST) -v -race -timeout 60s ./... --coverprofile=cov.out && go tool cover --html=cov.out
 
 .PHONY: check
-check: lint tests ## check: Runs the linters and tests.
+check: fmt test build ## check: Runs the formatters, linters, tests adn build.
 
 .PHONY: run
 run: ## run

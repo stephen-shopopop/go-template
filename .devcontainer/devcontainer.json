@@ -1,36 +1,114 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/go
 {
+  // https://containers.dev/features.html
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
   "name": "Go",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      // Update the VARIANT arg to pick a version of Go: 1, 1.19, 1.18
-      // Append -bullseye or -buster to pin to an OS version.
-      // Use -bullseye variants on local arm64/Apple Silicon.
-      "VARIANT": "1.24",
-      // Options
-      "NODE_VERSION": "lts/*"
-    }
+  "image": "mcr.microsoft.com/devcontainers/go:1-1.24-bookworm",
+  "features": {
+    "ghcr.io/prulloac/devcontainer-features/pre-commit:1": {}
   },
-  "runArgs": [
-    "--cap-add=SYS_PTRACE",
-    "--security-opt",
-    "seccomp=unconfined"
-  ],
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
     "vscode": {
       // Set *default* container specific settings.json values on container create.
       "settings": {
-        "go.toolsManagement.checkForUpdates": "local",
+        "files.eol": "\n",
+        "files.insertFinalNewline": true,
+        "go.toolsManagement.autoUpdate": true,
         "go.useLanguageServer": true,
-        "go.gopath": "/go"
+        "go.addTags": {
+          "tags": "json",
+          "options": "json=omitempty",
+          "promptForTags": false,
+          "transform": "snakecase",
+        },
+        "gopls": {
+          "formatting.gofumpt": true,
+          "usePlaceholders": true,
+          "ui.semanticTokens": true,
+          "staticcheck": false, // Enable/Disable if not causing memory issues
+        },
+        "go.lintTool": "golangci-lint",
+        "go.lintFlags": [
+          "--fast",
+          "--timeout",
+          "5m",
+          "--fix"
+        ],
+        // Disable test caching, race and show coverage (in sync with makefile)
+        "go.testFlags": [
+          "-cover",
+          "-race",
+          "-count=1",
+          "-v",
+          "-timeout=5m"
+        ],
+        "go.enableCodeLens": {
+          "runtest": true,
+        },
+        // Go-specific editor settings
+        "[go]": {
+          "editor.insertSpaces": false,
+          "editor.formatOnSave": true,
+          "editor.formatOnSaveMode": "file",
+          "editor.stickyScroll.enabled": true, // Better navigation for long files
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.fixAll": "always"
+          },
+        },
+        // Enhanced inlay hints
+        "go.inlayHints.compositeLiteralFields": true,
+        "go.inlayHints.compositeLiteralTypes": true,
+        "go.inlayHints.functionTypeParameters": true,
+        "go.inlayHints.parameterNames": true,
+        "go.inlayHints.rangeVariableTypes": true,
+        "go.inlayHints.constantValues": true,
+        // Security checks
+        "go.diagnostic.vulncheck": "Imports",
+        "go.toolsEnvVars": {
+          "GOFLAGS": "-buildvcs=false" // Better performance for large repos
+        },
+        "git.ignoreRebaseWarning": true,
+        "git.replaceTagsWhenPull": true,
+        "makefile.configureOnOpen": true,
+        "[markdown]": {
+          "editor.formatOnSave": true,
+          "editor.formatOnPaste": true,
+          "editor.insertSpaces": true,
+          "editor.tabSize": 2,
+          "editor.detectIndentation": false,
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[yaml]": {
+          "editor.formatOnSave": true,
+          "editor.formatOnPaste": true,
+          "editor.insertSpaces": true,
+          "editor.tabSize": 2,
+          "editor.detectIndentation": false,
+          "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "prettier.enable": false,
+        "editor.fontFamily": "Jetbrains Mono, Monaco, 'Courier New', monospace",
+        "editor.fontLigatures": true,
+        "editor.fontSize": 13,
+        "editor.lineHeight": 1.4,
+        "errorLens.gutterIconsEnabled": true,
+        "errorLens.gutterIconSet": "borderless",
+        "errorLens.followCursor": "activeLine",
+        "editor.acceptSuggestionOnEnter": "on",
+        "[json][jsonc]": {
+          "editor.defaultFormatter": "vscode.json-language-features",
+          "editor.tabSize": 2,
+          "editor.formatOnPaste": true,
+          "editor.formatOnSave": true,
+          "editor.insertSpaces": true,
+          "editor.detectIndentation": true
+        }
       },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        / // Golang
+        // Golang
         "golang.Go",
         // Code quality
         "aaron-bond.better-comments",
@@ -68,10 +146,14 @@
       ]
     }
   },
+  "runArgs": [
+    "--env-file",
+    ".devcontainer/devcontainer.env"
+  ],
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
+  "forwardPorts": [
+    8000
+  ],
   // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "go version",
-  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "vscode"
+  "postCreateCommand": "make deps && pre-commit install"
 }
