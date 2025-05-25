@@ -14,11 +14,17 @@ APPLY_FIXES: all
 # default
 # ENABLE_LINTERS:
 
-# DISABLE:
+DISABLE_LINTERS:
+  - GO_REVIVE
+  - GO_GOLANGCI_LINT
+
+DISABLE:
   # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-  # - SPELL # Uncomment to disable checks of spelling mistakes
+  - SPELL # Uncomment to disable checks of spelling mistakes
 
 SHOW_ELAPSED_TIME: true
 
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 # DISABLE_ERRORS: true
+
+FILTER_REGEX_EXCLUDE: (.devcontainer/)
