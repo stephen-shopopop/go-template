@@ -15,6 +15,8 @@ on:
       - main
       - master
 
+permissions: read-all
+
 # Comment env block if you do not want to apply fixes
 env:
   # Apply linter fixes configuration
@@ -34,8 +36,6 @@ env:
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
-
-permissions: write-all
 
 jobs:
   megalinter:
