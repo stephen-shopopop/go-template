@@ -4,13 +4,20 @@
     "**/vscode-extension/**",
     "**/.git/**",
     "**/.pnpm-lock.json",
-    ".vscode",
+    ".vscode/**",
     "megalinter",
     "package-lock.json",
-    "report"
+    "report",
+    "Makefile",
+    ".pre-commit-config.yaml",
+    ".github/workflows/**",
+    ".mega-linter.yml",
+    ".jscpd.json",
+    ".gitignore",
+    "LICENSE"
   ],
   "language": "en",
   "noConfigSearch": true,
-  "words": ["megalinter", "oxsecurity"],
+  "words": ["megalinter", "oxsecurity", "shopopop"],
   "version": "0.2"
 }

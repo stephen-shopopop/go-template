@@ -23,7 +23,7 @@ go run ./cmd/cli
 ### References
 
 - [golang for nodejs developers](https://github.com/miguelmota/golang-for-nodejs-developers)
-- [Debuter avec golang](https://www.youtube.com/c/getCodingKnowledge/videos)
+- [Start with golang](https://www.youtube.com/c/getCodingKnowledge/videos)
 - [learn golang with test](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
 - [go zero](https://go-zero.dev/en/)
 - [dev container](https://containers.dev/features.html)
