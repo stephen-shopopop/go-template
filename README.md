@@ -1,7 +1,6 @@
-[![Minimal golang version](https://img.shields.io/static/v1?label=go&message=%3E=1.24&color)](https://go.dev/doc/devel/release)
-
-
 # Go template
+
+![GoLand](https://img.shields.io/badge/GoLand-0f0f0f?&style=for-the-badge&logo=goland&logoColor=white)
 
 [Installation golang](https://go.dev/doc/install)
 

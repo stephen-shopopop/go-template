@@ -7,31 +7,20 @@
     "tags": "json",
     "options": "json=omitempty",
     "promptForTags": false,
-    "transform": "snakecase",
+    "transform": "snakecase"
   },
   "gopls": {
     "formatting.gofumpt": true,
     "usePlaceholders": true,
     "ui.semanticTokens": true,
-    "staticcheck": false, // Enable/Disable if not causing memory issues
+    "staticcheck": false // Enable/Disable if not causing memory issues
   },
   "go.lintTool": "golangci-lint",
-  "go.lintFlags": [
-    "--fast",
-    "--timeout",
-    "5m",
-    "--fix"
-  ],
+  "go.lintFlags": ["--fast", "--timeout", "5m", "--fix"],
   // Disable test caching, race and show coverage (in sync with makefile)
-  "go.testFlags": [
-    "-cover",
-    "-race",
-    "-count=1",
-    "-v",
-    "-timeout=5m"
-  ],
+  "go.testFlags": ["-cover", "-race", "-count=1", "-v", "-timeout=5m"],
   "go.enableCodeLens": {
-    "runtest": true,
+    "runtest": true
   },
   // Go-specific editor settings
   "[go]": {
@@ -42,7 +31,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always",
       "source.fixAll": "always"
-    },
+    }
   },
   // Enhanced inlay hints
   "go.inlayHints.compositeLiteralFields": true,
