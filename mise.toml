@@ -21,7 +21,7 @@ alias = 'i'
 run = 'pre-commit install && go mod vendor && go mod verify'
 
 [tasks.build]
-description = 'uild the CLI'
+description = 'Build the CLI'
 alias = 'b'
 run = 'go build -o build/$PROJECT_NAME ./cmd/cli'
 
