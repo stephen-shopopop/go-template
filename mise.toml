@@ -1,5 +1,13 @@
+min_version = "2025.5.16"
+
 [env]
-NODE_ENV = 'production'
+NODE_ENV = "{{ env.NODE_ENV | default(value='development') }}"
+
+# Use the project name derived from the current directory
+PROJECT_NAME = "{{ config_root | basename }}"
+
+[hooks]
+enter = 'mise i -q'
 
 [tools] # Use > mise use
 go = '1.24'
@@ -14,40 +22,51 @@ run = 'pre-commit install && go mod vendor && go mod verify'
 
 [tasks.build]
 description = 'uild the CLI'
-run = 'go build -o build/go-template ./cmd/cli'
+alias = 'b'
+run = 'go build -o build/$PROJECT_NAME ./cmd/cli'
 
 [tasks.start]
 description = 'Run the CLI'
+alias = 's'
 run = 'go run ./cmd/cli'
 
 [tasks.lint]
 description = 'Lint with golangci-lint'
+alias = 'l'
 run = 'golangci-lint run ./...'
 
 [tasks.fmt]
 description = 'Format all files'
+alias = 'f'
 run = 'go vet ./...; true && gofmt -s -w . && golangci-lint run --fix'
 
 [tasks.test]
 description = 'Run tests'
+alias = 't'
 run = 'go clean --testcache && go test -v -race -timeout 60s ./... --coverprofile=cov.out && go tool cover --html=cov.out'
 
 [tasks.check]
 description = 'Run CI tasks'
+alias = 'c'
 depends = ['lint', 'test', 'build']
+
+[tasks.clean]
+description = 'Clean project'
+run = 'go clean -i ./... && rm -fr build && rm -fr cov.out'
 
 [tasks.maintenance]
 description = 'Maintenance project'
-run = 'go clean -i ./... && rm -fr build && mise uninstall --all'
+depends = ['clean']
+run = 'mise uninstall --all'
 
 [tasks.build-darwin]
 description = 'Build binary macos'
-run = 'GOOS=darwin GOARCH=amd64 go build-v -o build/go-template-darwin ./cmd/cli'
+run = 'GOOS=darwin GOARCH=amd64 go build-v -o build/$PROJECT_NAME-darwin ./cmd/cli'
 
 [tasks.build-win]
 description = 'Build binary window'
-run = 'GOOS=windows GOARCH=amd64 go build -o build/$go-template.exe ./cmd/cli'
+run = 'GOOS=windows GOARCH=amd64 go build -o build/$PROJECT_NAME.exe ./cmd/cli'
 
 [tasks.build-linux]
 description = 'Build binary linux'
-run = 'GOOS=linux GOARCH=amd64 go build -v -o build/go-template-linux ./cmd/cli'
+run = 'GOOS=linux GOARCH=amd64 go build -v -o build/$PROJECT_NAME-linux ./cmd/cli'
