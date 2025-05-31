@@ -41,6 +41,7 @@ install/global: ## build and install go application executable
 install: ## Install the project dependencies
 	@echo "🍿 Installing dependencies for mac with homebrew (https://brew.sh)... "
 	@brew install golangci-lint
+	@brew install mise
 	@brew install graphviz
 	@brew install pre-commit && pre-commit install
 

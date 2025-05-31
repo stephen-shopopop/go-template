@@ -34,6 +34,8 @@
     // Yaml
     "redhat.vscode-yaml",
     // Make
-    "ms-vscode.makefile-tools"
+    "ms-vscode.makefile-tools",
+    // Toml
+    "amasfe.even-better-toml"
   ]
 }

@@ -1,0 +1,53 @@
+[env]
+NODE_ENV = 'production'
+
+[tools] # Use > mise use
+go = '1.24'
+golangci-lint = "latest"
+node = '24'
+pre-commit = "latest"
+
+[tasks.install]
+description = 'Install the project dependencies'
+alias = 'i'
+run = 'pre-commit install && go mod vendor && go mod verify'
+
+[tasks.build]
+description = 'uild the CLI'
+run = 'go build -o build/go-template ./cmd/cli'
+
+[tasks.start]
+description = 'Run the CLI'
+run = 'go run ./cmd/cli'
+
+[tasks.lint]
+description = 'Lint with golangci-lint'
+run = 'golangci-lint run ./...'
+
+[tasks.fmt]
+description = 'Format all files'
+run = 'go vet ./...; true && gofmt -s -w . && golangci-lint run --fix'
+
+[tasks.test]
+description = 'Run tests'
+run = 'go clean --testcache && go test -v -race -timeout 60s ./... --coverprofile=cov.out && go tool cover --html=cov.out'
+
+[tasks.check]
+description = 'Run CI tasks'
+depends = ['lint', 'test', 'build']
+
+[tasks.maintenance]
+description = 'Maintenance project'
+run = 'go clean -i ./... && rm -fr build && mise uninstall --all'
+
+[tasks.build-darwin]
+description = 'Build binary macos'
+run = 'GOOS=darwin GOARCH=amd64 go build-v -o build/go-template-darwin ./cmd/cli'
+
+[tasks.build-win]
+description = 'Build binary window'
+run = 'GOOS=windows GOARCH=amd64 go build -o build/$go-template.exe ./cmd/cli'
+
+[tasks.build-linux]
+description = 'Build binary linux'
+run = 'GOOS=linux GOARCH=amd64 go build -v -o build/go-template-linux ./cmd/cli'

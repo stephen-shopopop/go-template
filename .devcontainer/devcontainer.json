@@ -3,7 +3,8 @@
   "name": "Go",
   "image": "mcr.microsoft.com/devcontainers/go:1-1.24-bookworm",
   "features": {
-    "ghcr.io/prulloac/devcontainer-features/pre-commit:1": {}
+    "ghcr.io/prulloac/devcontainer-features/pre-commit:1": {},
+    "ghcr.io/devcontainers-extra/features/mise:1": {}
   },
   // Configure tool-specific properties.
   "customizations": {
@@ -141,7 +142,9 @@
         // Yaml
         "redhat.vscode-yaml",
         // Make
-        "ms-vscode.makefile-tools"
+        "ms-vscode.makefile-tools",
+        // Toml
+        "amasfe.even-better-toml"
       ]
     }
   },
