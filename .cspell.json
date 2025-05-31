@@ -14,10 +14,15 @@
     ".mega-linter.yml",
     ".jscpd.json",
     ".gitignore",
+    "mise.toml",
     "LICENSE"
   ],
   "language": "en",
   "noConfigSearch": true,
-  "words": ["megalinter", "oxsecurity", "shopopop"],
+  "words": [
+    "megalinter",
+    "oxsecurity",
+    "shopopop"
+  ],
   "version": "0.2"
 }
