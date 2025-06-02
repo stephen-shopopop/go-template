@@ -15,6 +15,9 @@
     ".jscpd.json",
     ".gitignore",
     "mise.toml",
+    "bin/**",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
     "LICENSE"
   ],
   "language": "en",
